@@ -31,7 +31,7 @@ export default function Hero() {
               <Link href="/products"
                 className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-3 text-base font-medium text-orange-600 shadow-sm hover:bg-orange-100 sm:px-8"
               >
-                Shop swags
+                Start shopping
               </Link>
             </div>
           </div>
