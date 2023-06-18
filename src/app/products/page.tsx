@@ -6,12 +6,18 @@ import ProductCard from '@/components/ProductCard'
 export default function Products () {
 
     const [products, setProducts] = useState<any[]>([])
+
+    const getProducts = async () => {
+        try {
+            const results = await medusa.products.list();
+            console.log(results)
+            setProducts(results.products)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
     useEffect(() => {
-      const getProducts = async () => {
-          const results = await medusa.products.list();
-          console.log(results)
-          setProducts(results.products)
-      }
       getProducts()
     }, []);
 
