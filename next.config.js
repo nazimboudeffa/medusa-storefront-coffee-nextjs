@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     env: {
-        BACKEND_URL: "http://192.168.0.15:9000",
+        BACKEND_URL: process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL,
     },
     images: {
     remotePatterns: [
