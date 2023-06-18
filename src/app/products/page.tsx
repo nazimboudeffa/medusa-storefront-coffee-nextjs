@@ -5,7 +5,7 @@ import ProductCard from '@/components/ProductCard'
 
 export default function Products () {
 
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState<any[]>([])
     useEffect(() => {
       const getProducts = async () => {
           const results = await medusa.products.list();

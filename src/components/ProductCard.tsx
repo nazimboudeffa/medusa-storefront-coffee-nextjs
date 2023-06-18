@@ -2,11 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 
-function cn(...classes) {
+function cn(...classes : any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product } : { product: any }) {
   const [isLoading, setLoading] = useState(true)
 
   return (
