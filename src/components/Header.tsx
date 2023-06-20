@@ -116,7 +116,7 @@ export default function Header () {
 
                 <span className="hidden sm:block">
                     <a
-                    href="/search"
+                    href="#"
                     className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-orange-500"
                     >
                     <svg
