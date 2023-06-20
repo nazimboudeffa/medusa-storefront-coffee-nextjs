@@ -36,14 +36,14 @@ export default function Header () {
                 className="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-gray-500"
             >
                 <a
-                href="/about"
+                href="#"
                 className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-orange-500"
                 >
                 About
                 </a>
 
                 <a
-                href="/news"
+                href="#"
                 className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-orange-500"
                 >
                 News
@@ -57,7 +57,7 @@ export default function Header () {
                 </a>
 
                 <a
-                href="/contact"
+                href="#"
                 className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-orange-500"
                 >
                 Contact
@@ -68,7 +68,7 @@ export default function Header () {
                 <div className="flex items-center border-x border-gray-100">
                 <span className="border-e border-e-gray-100">
                     <a
-                    href="/cart"
+                    href="#"
                     className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-orange-500"
                     >
                     <svg
@@ -92,7 +92,7 @@ export default function Header () {
 
                 <span className="border-e border-e-gray-100">
                     <a
-                    href="/account"
+                    href="#"
                     className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-orange-500"
                     >
                     <svg
