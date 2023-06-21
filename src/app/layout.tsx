@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <MedusaProvider 
-      baseUrl={process.env.BACKEND_URL}
+      baseUrl={process.env.BACKEND_URL!}
       queryClientProviderProps={{
         client: queryClient,
       }}
