@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function MobileMenu ({ open }) {
+export default function MobileMenu ({ open } : { open: boolean }) {
     return (
         <div className={`${open? "block" : "hidden"} flex flex-col`}>
             <Link href="/products">
