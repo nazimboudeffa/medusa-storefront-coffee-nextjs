@@ -5,7 +5,7 @@ import MobileMenu from "./MobileMenu";
 
 export default function Header () {
     
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
 
     return (
         <header className="border-b border-gray-100">
