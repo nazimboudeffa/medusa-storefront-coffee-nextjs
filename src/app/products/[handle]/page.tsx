@@ -1,20 +1,34 @@
 "use client"
-import { useState, useEffect, useMemo } from 'react'
-import Image from 'next/image'
-import { medusa } from '@/utils/medusa-client'
-
-function cn(...classes : any[]) {
-  return classes.filter(Boolean).join(' ')
-}
+import { medusaClient } from '@/utils/medusa-client'
+import { ProductProvider } from '@/context/product-context'
+import ProductActions from '@/components/ProductActions'
+import { useQuery } from "@tanstack/react-query"
+import { use, useEffect, useState } from 'react'
 
 export default function Product(context : any) {
 
-  const [isLoading, setLoading] = useState(true)
+  const handle = context.params.handle
+
+  // const fetchProduct = async (handle: string) => {
+  //   return await medusaClient.products
+  //     .list({ handle })
+  //     .then(({ products }) => products[0])
+  // }
+
+  // const { data, isError, isLoading, isSuccess } = useQuery(
+  //   [`get_product`, handle],
+  //   () => fetchProduct(handle),
+  //   {
+  //     enabled: handle.length > 0,
+  //     keepPreviousData: true,
+  //   }
+  // )
+
   const [product, setProduct] = useState<any>('')
 
   const fetchProduct = async (handle: string) => {
     try {
-      const results = await medusa.products.list({ handle });
+      const results = await medusaClient.products.list({ handle });
       console.log(results.products[0])
       setProduct(results.products[0])
     } catch (error) {
@@ -24,41 +38,13 @@ export default function Product(context : any) {
 
   useEffect(() => {
     fetchProduct(context.params.handle)
+    console.log("test "+ product)
   }, []);
 
+
   return (
-    <div className="flex h-screen flex-col justify-between">
-      <div className="mx-auto mt-16 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div className="mx-auto flex flex-col sm:flex-row">
-          { product.thumbnail && (
-            <Image
-              alt="product image"
-              src={product.thumbnail}
-              width={640}
-              height={800}
-              className={cn(
-                'object-cover duration-700 ease-in-out group-hover:opacity-75	',
-                isLoading
-                  ? 'scale-110 blur-2xl grayscale'
-                  : 'scale-100 blur-0 grayscale-0'
-              )}
-              onLoadingComplete={() => setLoading(false)}
-            />
-          )}
-          <div className="mt-10 flex flex-col sm:mt-0 sm:ml-10">
-            <h1 className="mt-1 text-4xl font-bold uppercase text-gray-900 sm:text-5xl sm:tracking-tight lg:text-5xl">
-              {product.title}
-            </h1>
-            <h1 className="mt-3 text-4xl font-bold text-gray-500 sm:text-3xl sm:tracking-tight lg:text-3xl">
-              PRICE
-            </h1>
-            <div className="mt-10 mb-5 border-t border-gray-200 pt-10 font-bold">
-              Description
-            </div>
-            <p className="max-w-xl">{product.description}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ProductProvider product={product}>
+      <ProductActions product={product} />
+    </ProductProvider>
   )
 }
