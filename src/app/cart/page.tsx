@@ -1,10 +1,15 @@
 "use client"
 import { useGetCart } from "medusa-react"
+import { useEffect, useState } from "react"
 
 export default function Cart () {
 
-  const cart_id = localStorage.getItem("cart_id")
+  const [cart_id, setCartId] = useState<any>('')
   const { cart, isLoading } = useGetCart(cart_id!)
+
+  useEffect(() => {
+    setCartId(localStorage.getItem("cart_id"))
+  }, [])
   
   return (
     <section>
