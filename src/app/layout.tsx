@@ -3,7 +3,6 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { StoreProvider } from '@/context/store-context'
 import { CartProvider, MedusaProvider } from "medusa-react"
 import { queryClient } from '@/utils/medusa-client'
 
