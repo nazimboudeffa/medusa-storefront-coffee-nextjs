@@ -22,15 +22,13 @@ export default function RootLayout({
       }}
     >
       <CartProvider>
-        <StoreProvider>
-          <html lang="en">
-            <body className={inter.className}>
-              <Header />
-              {children}
-              <Footer />
-            </body>
-          </html>
-        </StoreProvider>
+        <html lang="en">
+          <body className={inter.className}>
+            <Header />
+            {children}
+            <Footer />
+          </body>
+        </html>
       </CartProvider>
     </MedusaProvider>
   )
