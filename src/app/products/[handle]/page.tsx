@@ -1,14 +1,14 @@
 "use client"
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Image from 'next/image'
 import { medusa } from '@/utils/medusa-client'
-import logo from '../../../../public/logo.png'
 
 function cn(...classes : any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function Product(context : any) {
+
   const [isLoading, setLoading] = useState(true)
   const [product, setProduct] = useState<any>('')
 

@@ -28,7 +28,6 @@ export default function ProductCard({ product } : { product: any }) {
       </div>
       <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
         <h3>{product.title}</h3>
-        <p>PRICE</p>
       </div>
       <p className="mt-1 text-sm italic text-gray-500">
         {product.description || 'No description'}

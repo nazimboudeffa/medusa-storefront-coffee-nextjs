@@ -77,7 +77,7 @@ export default function Header () {
                     <div className="flex items-center border-x border-gray-100">
                     <span className="border-e border-e-gray-100">
                         <a
-                        href="#"
+                        href="/cart"
                         className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-orange-500"
                         >
                         <svg
