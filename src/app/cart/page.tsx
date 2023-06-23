@@ -5,7 +5,7 @@ import { useGetCart } from "medusa-react"
 import { useEffect, useState } from "react"
 import { Cart } from "@medusajs/medusa"
 
-export default function Cart () {
+export default function CartPage () {
 
   const [cart_id, setCartId] = useState<any>('')
   const { cart, isLoading } = useGetCart(cart_id)
