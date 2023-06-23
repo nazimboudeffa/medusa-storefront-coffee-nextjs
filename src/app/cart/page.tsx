@@ -6,7 +6,7 @@ import { useEffect, useState } from "react"
 export default function Cart () {
 
   const [cart_id, setCartId] = useState<any>('')
-  const { cart, isLoading } = useGetCart(cart_id!)
+  const { cart, isLoading } = useGetCart(cart_id)
   console.log(cart?.items)
 
   useEffect(() => {
