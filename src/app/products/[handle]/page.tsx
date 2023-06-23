@@ -26,7 +26,7 @@ export default function Product(context : any) {
   const [maxQuantityMet, setMaxQuantityMet] = useState<boolean>(false)
   const [inStock, setInStock] = useState<boolean>(true)
   const [isLoading, setLoading] = useState(true)
-  const [variants, setVariants] = useState<Variant[] | unknown>([])
+  const [variants, setVariants] = useState<any[]>([])
 
   const fetchProduct = async (handle: string) => {
     try {
@@ -42,7 +42,7 @@ export default function Product(context : any) {
 
   useEffect(() => {
     fetchProduct(context.params.handle)
-    console.log(product)
+    console.log("test "+ product)
   }, []);
 
   const { addItem } = useStore()
@@ -61,7 +61,7 @@ export default function Product(context : any) {
   const variantRecord = useMemo(() => {
     const map: Record<string, Record<string, string>> = {}
 
-    for (const variant of variants as Variant[]) {
+    for (const variant of variants) {
       const tmp: Record<string, string> = {}
 
       for (const option of variant.options) {
