@@ -26,7 +26,7 @@ export default function Product(context : any) {
   const [maxQuantityMet, setMaxQuantityMet] = useState<boolean>(false)
   const [inStock, setInStock] = useState<boolean>(true)
   const [isLoading, setLoading] = useState(true)
-  const [variants, setVariants] = useState<Variant[]>([])
+  const [variants, setVariants] = useState<Variant[] | unknown>([])
 
   const fetchProduct = async (handle: string) => {
     try {
