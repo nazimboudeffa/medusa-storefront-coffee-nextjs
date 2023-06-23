@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect } from 'react'
-import { medusa } from '@/utils/medusa-client'
+import { medusaClient } from '@/utils/medusa-client'
 import ProductCard from '@/components/ProductCard'
 
 export default function Products () {
@@ -9,7 +9,7 @@ export default function Products () {
 
     const getProducts = async () => {
         try {
-            const results = await medusa.products.list();
+            const results = await medusaClient.products.list();
             console.log(results)
             setProducts(results.products)
         } catch (error) {
