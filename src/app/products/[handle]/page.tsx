@@ -1,12 +1,10 @@
 "use client"
 import { medusaClient } from '@/utils/medusa-client'
-import { useQuery } from "@tanstack/react-query"
 import { useEffect, useMemo, useState } from 'react'
 import { canBuy } from "@/utils/can-buy"
 import { findCheapestPrice } from "@/utils/prices"
 import isEqual from "lodash/isEqual"
 import { formatVariantPrice, useCart } from "medusa-react"
-import { Product, Variant } from "@/types/medusa"
 import { useStore } from "@/context/store-context"
 import useProductPrice from '@/hooks/use-product-price'
 import clsx from "clsx"
@@ -21,12 +19,11 @@ export default function Product(context : any) {
   const handle = context.params.handle
 
   const [product, setProduct] = useState<any>('')
-  const [quantity, setQuantity] = useState<number>(1)
   const [options, setOptions] = useState<Record<string, string>>({})
-  const [maxQuantityMet, setMaxQuantityMet] = useState<boolean>(false)
   const [inStock, setInStock] = useState<boolean>(true)
   const [isLoading, setLoading] = useState(true)
   const [variants, setVariants] = useState<any[]>([])
+  const [cart_id, setCartId] = useState<any>('')
 
   const fetchProduct = async (handle: string) => {
     try {
@@ -41,8 +38,7 @@ export default function Product(context : any) {
   }
 
   useEffect(() => {
-    fetchProduct(context.params.handle)
-    console.log("test "+ product)
+    fetchProduct(handle)
   }, []);
 
   const { addItem } = useStore()
@@ -94,9 +90,9 @@ export default function Product(context : any) {
     }
   }, [variants, variantRecord])
 
-  const disabled = useMemo(() => {
-    return !variant
-  }, [variant])
+  // const disabled = useMemo(() => {
+  //   return !variant
+  // }, [variant])
 
   // memoized function to get the price of the current variant
   const formattedPrice = useMemo(() => {
@@ -116,36 +112,16 @@ export default function Product(context : any) {
     }
   }, [variant])
 
-  const updateOptions = (update: Record<string, string>) => {
-    setOptions({ ...options, ...update })
-  }
+  // const updateOptions = (update: Record<string, string>) => {
+  //   setOptions({ ...options, ...update })
+  // }
 
   const addToCart = () => {
     if (variant) {
       addItem({
         variantId: variant.id,
-        quantity,
+        quantity: 1,
       })
-    }
-  }
-
-  const increaseQuantity = () => {
-    const maxQuantity = variant?.inventory_quantity || 0
-
-    if (maxQuantity > quantity + 1) {
-      setQuantity(quantity + 1)
-    } else {
-      setMaxQuantityMet(true)
-    }
-  }
-
-  const decreaseQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1)
-
-      if (maxQuantityMet) {
-        setMaxQuantityMet(false)
-      }
     }
   }
 
