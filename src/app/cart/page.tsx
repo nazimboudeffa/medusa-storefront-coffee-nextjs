@@ -3,6 +3,7 @@ import CartItem from "@/components/CartItem"
 import CartTotal from "@/components/CartTotal"
 import { useGetCart } from "medusa-react"
 import { useEffect, useState } from "react"
+import { Cart } from "@medusajs/medusa"
 
 export default function Cart () {
 
@@ -32,7 +33,7 @@ export default function Cart () {
                 </ul>
 
                 <div className="mt-8 flex justify-end border-t border-gray-100 pt-8">
-                 <CartTotal cart={cart} />
+                 <CartTotal cart={cart as Cart} />
                 </div>
             </div>
             </div>
