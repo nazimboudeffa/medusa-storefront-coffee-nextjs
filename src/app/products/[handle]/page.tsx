@@ -42,7 +42,7 @@ export default function Product(context : any) {
 
   useEffect(() => {
     fetchProduct(context.params.handle)
-    console.log("test "+ product)
+    console.log(product)
   }, []);
 
   const { addItem } = useStore()
@@ -61,7 +61,7 @@ export default function Product(context : any) {
   const variantRecord = useMemo(() => {
     const map: Record<string, Record<string, string>> = {}
 
-    for (const variant of variants) {
+    for (const variant of variants as Variant[]) {
       const tmp: Record<string, string> = {}
 
       for (const option of variant.options) {
