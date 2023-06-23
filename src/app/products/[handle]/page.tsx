@@ -207,7 +207,7 @@ export default function Product(context : any) {
                 Description
                 </div>
                 <p className="max-w-xl">{product.description}</p>
-                <button className="inline-block h-10 w-32 rounded-lg text-orange-500 bg-white hover:bg-orange-500 hover:text-white mt-5" onClick={addToCart}>{!inStock ? "Out of stock" : "Add to cart"}</button>
+                <button className="inline-block h-10 w-32 rounded-lg text-orange-500 bg-white hover:bg-orange-500 hover:text-white mt-5" onClick={()=>addToCart}>{!inStock ? "Out of stock" : "Add to cart"}</button>
             </div>
             </div>
         </div>
